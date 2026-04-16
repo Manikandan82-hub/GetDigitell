@@ -14,26 +14,47 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "GetDigitell - High-Performance Digital Solutions",
+  title: "GetDigitell - Professional Websites & Digital Solutions in 48 Hours",
   description:
-    "We build high-performance digital solutions. Web development, UI/UX design, and IT services delivered fast within 48 hours.",
-  generator: "v0.app",
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    "We build high-performance, conversion-focused digital solutions starting at just £100. Get your professional website live in 48 hours. Experts in Web Development, UI/UX, and IT Services.",
+  keywords: [
+    "Web Development",
+    "UI/UX Design",
+    "Digital Solutions",
+    "Fast Website Development",
+    "Startup MVP",
+    "Business Website",
+    "GetDigitell",
+    "Next.js Development",
+    "Affordable Web Design",
+  ],
+  authors: [{ name: "GetDigitell Team" }],
+  openGraph: {
+    title: "GetDigitell - High-Performance Digital Solutions",
+    description:
+      "Transform your business with a professional website delivered in 48 hours. Starting at £100.",
+    url: "https://getdigitell.com",
+    siteName: "GetDigitell",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GetDigitell - Professional Websites in 48 Hours",
+    description:
+      "High-performance digital solutions starting at £100. Get live fast.",
+    creator: "@getdigitell",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
