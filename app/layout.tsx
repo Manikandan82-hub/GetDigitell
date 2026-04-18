@@ -6,6 +6,7 @@ import { FloatingWidget } from "@/components/floating-widget";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ClickEffect } from "@/components/click-effect";
+import { Toaster } from "@/components/ui/sonner";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export const metadata: Metadata = {
     "Startup MVP",
     "Business Website",
     "GetDigitell",
-    "Next.js Development",
     "Affordable Web Design",
+    "Get a Professional Website Live in 48 Hours",
+    "UK Web Design",
+    "Web Design UK",
   ],
   authors: [{ name: "GetDigitell Team" }],
   openGraph: {
@@ -64,13 +67,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-background scroll-smooth">
+    <html
+      lang="en"
+      className="bg-background scroll-smooth scroll-pt-20 lg:scroll-pt-24"
+    >
       <body className={`${sourceSans.variable} font-sans antialiased`}>
         <ClickEffect />
         <Navbar />
         {children}
         <Footer />
         <FloatingWidget />
+        <Toaster richColors position="top-center" />
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>

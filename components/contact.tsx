@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Loader2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,10 @@ import {
 } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
+import emailjs from "emailjs-com";
+import { useRef, useState, useEffect } from "react";
+import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 
 const contactInfo = [
   {
@@ -38,6 +42,61 @@ const contactInfo = [
 ];
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const [businessType, setBusinessType] = useState("Not Selected");
+  const [selectedPackage, setSelectedPackage] = useState("Not Selected");
+  const [preselectedPlan, setPreselectedPlan] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const plan = searchParams?.get("package");
+    if (plan === "launchpad") {
+      setSelectedPackage("launch");
+      setPreselectedPlan("Launchpad");
+    } else if (plan === "growthpro") {
+      setSelectedPackage("growth");
+      setPreselectedPlan("GrowthPro");
+    } else if (plan === "scalemax") {
+      setSelectedPackage("scale");
+      setPreselectedPlan("ScaleMax");
+    }
+  }, [searchParams]);
+
+  const sendEmail = (e: any) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setIsSubmitting(true);
+    emailjs
+      .sendForm(
+        "service_30tg5f8",
+        "template_mpfy8m1",
+        formRef.current,
+        "l9QDzDj-ebTthwZVO",
+      )
+      .then(
+        () => {
+          setIsSubmitting(false);
+          toast.success("Message sent successfully!", {
+            description: "Our technical team will respond within 24 hours.",
+          });
+          if (formRef.current) {
+            formRef.current.reset();
+          }
+          setBusinessType("Not Selected");
+          setSelectedPackage("Not Selected");
+          setPreselectedPlan("");
+        },
+        () => {
+          setIsSubmitting(false);
+          toast.error("Failed to send message", {
+            description: "Please try again later or contact us directly.",
+          });
+        },
+      );
+  };
   return (
     <section
       id="contact"
@@ -81,8 +140,8 @@ export function Contact() {
             className="relative w-full min-h-[450px] lg:min-h-full rounded-3xl overflow-hidden shadow-xl border border-border group"
           >
             <Image
-              src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Our Support Team"
+              src="/images/contact.webp"
+              alt="Contact GetDigitell for expert website design and IT support services in the UK - We help startups grow their digital presence"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
             />
@@ -126,7 +185,18 @@ export function Contact() {
           >
             <Card className="bg-card/50 backdrop-blur-sm border-border shadow-sm rounded-3xl overflow-hidden">
               <CardContent className="p-8 md:p-12">
-                <form className="space-y-8">
+                {preselectedPlan && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-8 px-5 py-4 bg-primary/10 border border-primary/20 rounded-2xl text-primary text-sm font-semibold flex items-center gap-3"
+                  >
+                    <Zap className="w-5 h-5 flex-shrink-0" />
+                    Awesome! You've chosen the {preselectedPlan} plan. Complete
+                    the form to get started.
+                  </motion.div>
+                )}
+                <form ref={formRef} onSubmit={sendEmail} className="space-y-8">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-3">
                       <label
@@ -136,6 +206,7 @@ export function Contact() {
                         Full Name
                       </label>
                       <Input
+                        name="user_name"
                         id="name"
                         placeholder="John Doe"
                         className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-xl h-12 px-4 shadow-sm"
@@ -149,6 +220,7 @@ export function Contact() {
                         Email Address
                       </label>
                       <Input
+                        name="user_email"
                         id="email"
                         type="email"
                         placeholder="john@example.com"
@@ -166,6 +238,7 @@ export function Contact() {
                         Phone Number
                       </label>
                       <Input
+                        name="user_phone"
                         id="phone"
                         type="tel"
                         placeholder="+44 (555) 000-0000"
@@ -180,6 +253,7 @@ export function Contact() {
                         Business Name
                       </label>
                       <Input
+                        name="business_name"
                         id="business"
                         placeholder="Acme Corp"
                         className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-xl h-12 px-4 shadow-sm"
@@ -192,7 +266,14 @@ export function Contact() {
                       <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                         Business Type
                       </label>
-                      <Select>
+                      <Select
+                        value={
+                          businessType !== "Not Selected"
+                            ? businessType
+                            : undefined
+                        }
+                        onValueChange={(value) => setBusinessType(value)}
+                      >
                         <SelectTrigger className="w-full bg-background/50 border-border/50 focus-visible:ring-primary rounded-xl h-12 px-5 pt-5 pb-6 shadow-sm">
                           <SelectValue placeholder="Select type" />
                         </SelectTrigger>
@@ -211,7 +292,14 @@ export function Contact() {
                       <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                         Package
                       </label>
-                      <Select>
+                      <Select
+                        value={
+                          selectedPackage !== "Not Selected"
+                            ? selectedPackage
+                            : undefined
+                        }
+                        onValueChange={(value) => setSelectedPackage(value)}
+                      >
                         <SelectTrigger className="w-full bg-background/50 border-border/50 focus-visible:ring-primary rounded-xl h-12 px-5 pt-5 pb-6 shadow-sm">
                           <SelectValue placeholder="Select package" />
                         </SelectTrigger>
@@ -223,14 +311,32 @@ export function Contact() {
                       </Select>
                     </div>
                   </div>
+                  <input
+                    type="hidden"
+                    name="business_type"
+                    value={businessType}
+                  />
+                  <input type="hidden" name="package" value={selectedPackage} />
+
+                  <Textarea name="message" placeholder="Type your message..." />
 
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full sm:w-auto rounded-full px-8 py-6 text-base font-semibold group flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto rounded-lg px-8 py-6 text-base font-semibold group flex items-center justify-center gap-2"
                   >
-                    Next Step
-                    <Send className="w-4 h-4 ml-2 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                    {isSubmitting ? (
+                      <>
+                        Submitting...
+                        <Loader2 className="w-4 h-4 ml-2 animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        Submit
+                        <Send className="w-4 h-4 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>

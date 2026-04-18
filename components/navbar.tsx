@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { href: "/#home", label: "Home" },
+  { href: "/#pricing", label: "Pricing" },
   { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
   { href: "/#portfolio", label: "Portfolio" },
-  { href: "/#pricing", label: "Pricing" },
   { href: "/#contact", label: "Contact" },
 ];
 

@@ -254,7 +254,7 @@ export function Hero() {
                 >
                   <Image
                     src="/digital-presence-growth.png"
-                    alt="Laptop showcasing business growth and website development achievement"
+                    alt="Professional web development services in the UK starting at £100 - Get your business website live in 48 hours with GetDigitell"
                     fill
                     className="object-cover object-center"
                     priority

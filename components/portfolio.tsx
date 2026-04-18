@@ -139,7 +139,7 @@ export function TemplateCard({
                 <div className="absolute inset-0 z-0 bg-background overflow-hidden relative">
                   <img
                     src={template.image}
-                    alt={`${template.title} preview`}
+                    alt={`${template.title} - Professional ${template.category} website template designed by GetDigitell UK`}
                     className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 mix-blend-overlay" />

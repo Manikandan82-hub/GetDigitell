@@ -94,8 +94,8 @@ export function WhyChooseUs() {
             {/* Main Image Frame */}
             <div className="relative w-full sm:w-[90%] h-[320px] sm:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden shadow-xl border-8 border-background bg-secondary/20">
               <Image
-                src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Professional team working"
+                src="/images/why-choose-us.webp"
+                alt="Expert UK-based web development team providing fast and reliable digital solutions for small businesses"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
               />
