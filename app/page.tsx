@@ -6,6 +6,7 @@ import { Portfolio } from "@/components/portfolio";
 import { Pricing } from "@/components/pricing";
 import { Contact } from "@/components/contact";
 import { ScrollSpy } from "@/components/scroll-spy";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -19,7 +20,9 @@ export default function Home() {
       <Portfolio />
       {/* <Testimonials /> */}
       {/* <CTA /> */}
-      <Contact />
+      <Suspense fallback={null}>
+        <Contact />
+      </Suspense>
     </main>
   );
 }
