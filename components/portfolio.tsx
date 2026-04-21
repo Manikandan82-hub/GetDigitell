@@ -7,7 +7,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
-export const templates = [
+const baseTemplates = [
   {
     title: "Imax Laser Tech",
     category: "Laser Cutting & CNC",
@@ -28,39 +28,57 @@ export const templates = [
     url: "https://appgoodfood.in/",
     image: "/images/appgoodfood.jpeg",
   },
+];
+
+const electricianThemes = [
   {
-    title: "Home Services & Electrician",
-    category: "Service Business",
-    description:
-      "Calm and accessible template designed for clinics, therapists, and spas.",
-    color: "from-rose-500 to-pink-500",
-    bgColor: "bg-rose-500/10",
+    url: "https://getdigitell-elec-green.vercel.app/",
+    theme: "Green",
+    color: "from-green-500 to-emerald-600",
+    bgColor: "bg-green-500/10",
+    image: "/images/green.jpeg",
+  },
+  {
+    url: "https://getdigitell-elec-blue.vercel.app/",
+    theme: "Blue",
+    color: "from-blue-500 to-indigo-600",
+    bgColor: "bg-blue-500/10",
+    image: "/images/blue.jpeg",
+  },
+  {
+    url: "https://getdigitell-elec-b-y.vercel.app/",
+    theme: "Black & Yellow",
+    color: "from-yellow-500 to-black",
+    bgColor: "bg-yellow-500/10",
     image: "/images/electrician-pro.jpeg",
   },
   {
-    title: "SaaS Landing Page",
-    category: "Software & Tech",
-    description:
-      "Conversion-focused landing page for software products and tech startups.",
-    color: "from-amber-500 to-orange-500",
-    bgColor: "bg-amber-500/10",
+    url: "https://getdigitell-elec-teal.vercel.app/",
+    theme: "Teal",
+    color: "from-teal-500 to-cyan-600",
+    bgColor: "bg-teal-500/10",
+    image: "/images/teal.jpeg",
   },
   {
-    title: "Local Business Hub",
-    category: "Trades & Services",
-    description:
-      "Trust-building template perfect for plumbers, electricians, and local trades.",
-    color: "from-violet-500 to-purple-500",
-    bgColor: "bg-violet-500/10",
+    url: "https://getdigitell-elec-yello-f.vercel.app/",
+    theme: "Yellow",
+    color: "from-yellow-400 to-orange-500",
+    bgColor: "bg-yellow-400/10",
+    image: "/images/yellow-f.jpeg",
   },
-  {
-    title: "Creator Portfolio",
-    category: "Personal Brand",
+];
+export const templates = [
+  ...baseTemplates,
+  ...electricianThemes.map((item) => ({
+    title: `Electrician Template (${item.theme})`,
+    category: "Service Business",
     description:
-      "Visual-heavy template for photographers, artists, and independent creators.",
-    color: "from-sky-500 to-indigo-500",
-    bgColor: "bg-sky-500/10",
-  },
+      "High-converting electrician website template with modern UI and fast performance.",
+    color: item.color,
+    bgColor: item.bgColor,
+    url: item.url,
+    image: item.image,
+  })),
 ];
 
 export function TemplateCard({

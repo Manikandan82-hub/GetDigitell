@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   title: "GetDigitell - Professional Websites & Digital Solutions in 48 Hours",
   description:
     "We build high-performance, conversion-focused digital solutions starting at just £100. Get your professional website live in 48 hours. Experts in Web Development, UI/UX, and IT Services.",
+  icons: {
+    icon: [
+      { url: "/getdigitell.png", sizes: "150x150", type: "image/png" },
+      { url: "/getdigitell.png", sizes: "300x300", type: "image/png" },
+    ],
+  },
   keywords: [
     "Web Development",
     "UI/UX Design",

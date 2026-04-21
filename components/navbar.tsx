@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
 const navItems = [
   { href: "/#home", label: "Home" },
   { href: "/#pricing", label: "Pricing" },
@@ -56,7 +56,7 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link
@@ -64,15 +64,15 @@ export function Navbar() {
             className="flex items-center gap-2 group"
             data-cursor-hover
           >
-            <motion.span
-              className="text-xl lg:text-2xl font-bold text-foreground tracking-tight"
-              whileHover={{ scale: 1.02 }}
-            >
-              Get
-              <span className="text-primary group-hover:text-primary/80 transition-colors">
-                Digitell
-              </span>
-            </motion.span>
+            {/* Logo */}
+            <Image
+              src="/getdigitell.png"
+              alt="GetDigitell Logo"
+              width={150}
+              height={150}
+              className="object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
