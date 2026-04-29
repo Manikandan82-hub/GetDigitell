@@ -143,6 +143,7 @@ export function Contact() {
               src="/images/contact.webp"
               alt="Contact GetDigitell for expert website design and IT support services in the UK - We help startups grow their digital presence"
               fill
+              loading="eager"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
             />
             {/* Elegant vibrant gradient overlay for text readability */}

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Twitter, Linkedin, Github, Instagram } from "lucide-react";
+import { Twitter, Linkedin, Github, Instagram, Facebook } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = {
@@ -21,10 +21,21 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/profile.php?id=61572342042661",
+    label: "Facebook",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/company/getdigitell/",
+    label: "LinkedIn",
+  },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/getdigitell",
+    label: "Instagram",
+  },
 ];
 
 export function Footer() {
@@ -58,14 +69,15 @@ export function Footer() {
             {/* Social Links */}
             <div className="mt-6 flex gap-4">
               {socialLinks.map((social) => (
-                <a
+                <Link
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
+                  target="_blank"
                   className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center hover:bg-brand-primary hover:border-brand-primary text-slate-600 hover:text-white transition-all shadow-sm"
                 >
                   <social.icon size={18} />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
