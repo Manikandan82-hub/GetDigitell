@@ -9,6 +9,8 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const outcomes = [
   {
@@ -26,8 +28,8 @@ const outcomes = [
     tag: "Conversion Focused",
     description:
       "We design websites built to convert visitors into real customers with clear messaging and strong CTAs.",
-    color: "text-primary",
-    accentBg: "bg-primary/10",
+    color: "text-brand-primary",
+    accentBg: "bg-brand-primary/10",
   },
   {
     icon: TrendingUp,
@@ -50,12 +52,30 @@ const features = [
 ];
 
 export function Services() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    skipSnaps: false,
+    breakpoints: {
+      "(min-width: 1024px)": { active: false },
+    },
+  });
+
+  // Auto-play for mobile
+  useEffect(() => {
+    if (!emblaApi) return;
+    const interval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [emblaApi]);
+
   return (
     <section
       id="services"
-      className="py-5 lg:py-15 bg-background relative overflow-hidden"
+      className="py-12 lg:py-24 bg-background relative overflow-hidden"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary/4 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-brand-primary/4 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -66,7 +86,7 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="text-left mb-16"
         >
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-widest mb-4">
+          <span className="inline-block text-sm font-semibold text-brand-primary uppercase tracking-widest mb-4">
             Our Services
           </span>
           <h2>What We Do</h2>
@@ -88,12 +108,12 @@ export function Services() {
           >
             {/* Animated glows */}
             <motion.div
-              className="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
+              className="absolute -top-20 -right-20 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl"
               animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
               transition={{ duration: 7, repeat: Infinity }}
             />
             <motion.div
-              className="absolute -bottom-16 -left-16 w-48 h-48 bg-primary/10 rounded-full blur-3xl"
+              className="absolute -bottom-16 -left-16 w-48 h-48 bg-brand-primary/10 rounded-full blur-3xl"
               animate={{ scale: [1.2, 1, 1.2] }}
               transition={{ duration: 7, repeat: Infinity }}
             />
@@ -105,13 +125,13 @@ export function Services() {
               {/* Icon + badge */}
               <div className="flex items-start justify-between mb-7">
                 <motion.div
-                  className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center"
+                  className="w-16 h-16 rounded-2xl bg-brand-primary/20 flex items-center justify-center"
                   whileHover={{ rotate: 8, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Code2 className="w-8 h-8 text-primary" />
+                  <Code2 className="w-8 h-8 text-brand-primary" />
                 </motion.div>
-                <span className="px-3 py-1.5 rounded-full bg-primary/25 text-xs font-semibold">
+                <span className="px-3 py-1.5 rounded-full bg-brand-primary/25 text-xs font-semibold">
                   Core Service
                 </span>
               </div>
@@ -162,7 +182,7 @@ export function Services() {
                     delay: i * 0.4,
                     ease: "easeInOut",
                   }}
-                  className="absolute top-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent -translate-y-1/2 blur-[1px]"
+                  className="absolute top-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-brand-primary to-transparent -translate-y-1/2 blur-[1px]"
                 />
 
                 {/* Receiver Arrow */}
@@ -175,52 +195,54 @@ export function Services() {
                     stiffness: 200,
                   }}
                   viewport={{ once: true }}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full border border-primary/30 bg-background flex items-center justify-center z-10 shadow-[0_0_15px_-3px_rgba(var(--primary),0.3)]"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full border border-brand-primary/30 bg-background flex items-center justify-center z-10 shadow-[0_0_15px_-3px_rgba(var(--brand-primary),0.3)]"
                 >
-                  <ArrowRight className="w-3.5 h-3.5 text-primary" />
+                  <ArrowRight className="w-3.5 h-3.5 text-brand-primary" />
                 </motion.div>
               </div>
             ))}
           </div>
 
-          {/* RIGHT — Outcome cards stacked */}
-          <div className="flex flex-col gap-4">
-            {outcomes.map((outcome, index) => {
-              const Icon = outcome.icon;
-              return (
-                <motion.div
-                  key={outcome.title}
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.15 }}
-                  whileHover={{ x: 6 }}
-                  className="group bg-card border border-border hover:border-primary/25 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 flex-1 relative overflow-hidden"
-                >
-                  {/* Left accent bar on hover */}
-                  <motion.div className="absolute left-0 top-4 bottom-4 w-0.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* RIGHT — Outcome cards stacked / Carousel on mobile */}
+          <div className="overflow-hidden px-1" ref={emblaRef}>
+            <div className="flex lg:flex-col gap-4">
+              {outcomes.map((outcome, index) => {
+                const Icon = outcome.icon;
+                return (
+                  <motion.div
+                    key={outcome.title}
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.15 }}
+                    whileHover={{ x: 6 }}
+                    className="flex-[0_0_100%] lg:flex-1 group bg-card border border-border hover:border-brand-primary/25 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-brand-primary/5 relative overflow-hidden"
+                  >
+                    {/* Left accent bar on hover */}
+                    <motion.div className="absolute left-0 top-4 bottom-4 w-0.5 bg-brand-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`w-12 h-12 rounded-xl ${outcome.accentBg} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon className={`w-6 h-6 ${outcome.color}`} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-1.5">
-                        <h3 className="text-base font-bold">{outcome.title}</h3>
-                        <span
-                          className={`text-xs font-semibold ${outcome.color} hidden sm:block`}
-                        >
-                          — {outcome.tag}
-                        </span>
+                    <div className="flex items-start gap-4">
+                      <div
+                        className={`w-12 h-12 rounded-xl ${outcome.accentBg} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <Icon className={`w-6 h-6 ${outcome.color}`} />
                       </div>
-                      <p className="text-sm">{outcome.description}</p>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1.5">
+                          <h3 className="text-base font-bold">{outcome.title}</h3>
+                          <span
+                            className={`text-xs font-semibold ${outcome.color} hidden sm:block`}
+                          >
+                            — {outcome.tag}
+                          </span>
+                        </div>
+                        <p className="text-sm">{outcome.description}</p>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
 /* ─── Card data ─── */
 const cards = [
   {
@@ -72,12 +72,15 @@ export function WhyChooseUs() {
               online presence and a high-converting website.
             </p>
 
-            <button className="group flex items-center pr-1.5 pl-6 py-1.5 bg-background hover:bg-card text-foreground rounded-full transition-all duration-300 gap-6 border border-border shadow-sm">
+            <Link
+              href="#contact"
+              className="group flex items-center pr-1.5 pl-6 py-1.5 bg-background hover:bg-card text-foreground rounded-full transition-all duration-300 gap-6 border border-border shadow-sm"
+            >
               <span className="font-semibold text-sm">Book a consultation</span>
               <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                 <ArrowRight className="w-5 h-5" />
               </div>
-            </button>
+            </Link>
           </motion.div>
 
           {/* Right Image Content (Layered Composition) */}

@@ -101,14 +101,14 @@ export function Hero() {
       className="relative min-h-screen flex items-center pt-10 lg:pt-5 overflow-hidden"
     >
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 bg-secondary/20" />
+      <div className="absolute inset-0 bg-brand-secondary/20" />
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl"
         animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
@@ -129,7 +129,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-2 py-2.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-8 backdrop-blur-sm border border-primary/20"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-sm font-semibold mb-8 backdrop-blur-sm border border-brand-primary/20"
               data-cursor-hover
             >
               <motion.span
@@ -141,14 +141,15 @@ export function Hero() {
               <span>Starts with £100</span>
             </motion.div>
 
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-4xl lg:text-5xl font-bold text-foreground mb-6"
             >
               Get a Professional Website Live in{" "}
               <span className="relative">
-                <span className="text-primary">48 Hours</span>
+                <span className="text-brand-primary">48 Hours</span>
                 {/* <motion.span
                   className="absolute -bottom-2 left-0 h-1 bg-primary rounded-full"
                   initial={{ width: 0 }}
@@ -156,7 +157,7 @@ export function Hero() {
                   transition={{ delay: 1, duration: 0.8 }}
                 /> */}
               </span>{" "}
-            </motion.h2>
+            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -173,12 +174,12 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="mt-10 flex flex-row sm:flex-row gap-4 justify-center items-center lg:justify-start"
             >
               <MagneticButton>
                 <Button
                   size="lg"
-                  className="text-base px-8 py-6 rounded-full group"
+                  className="bg-brand-primary hover:bg-brand-primary/90 text-white text-sm sm:text-base px-6 py-4 sm:px-8 sm:py-4 rounded-full group h-auto"
                   asChild
                 >
                   <Link href="#pricing">
@@ -197,12 +198,12 @@ export function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base px-8 py-6 rounded-full group"
+                  className="border-brand-primary/20 hover:bg-brand-primary/5 text-brand-primary text-sm sm:text-base px-6 py-4 sm:px-8 sm:py-4 rounded-full group h-auto"
                   asChild
                 >
                   <Link href="#portfolio" className="flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <Play size={14} className="text-primary ml-0.5" />
+                    <span className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center group-hover:bg-brand-primary/20 transition-colors">
+                      <Play size={14} className="text-brand-primary ml-0.5" />
                     </span>
                     View Portfolio
                   </Link>
@@ -271,8 +272,8 @@ export function Hero() {
                   data-cursor-hover
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Zap className="text-primary" size={24} />
+                    <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+                      <Zap className="text-brand-primary" size={24} />
                     </div>
                     <div>
                       <div className="text-sm font-bold text-foreground">
@@ -349,7 +350,7 @@ export function Hero() {
           transition={{ duration: 1.5, repeat: Infinity }}
           className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2"
         >
-          <motion.div className="w-1.5 h-1.5 bg-primary rounded-full" />
+          <motion.div className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
         </motion.div>
       </motion.div>
     </section>

@@ -24,7 +24,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
     >
       {label}
       <motion.span
-        className="absolute bottom-0 left-0 h-0.5 bg-primary rounded-full"
+        className="absolute bottom-0 left-0 h-0.5 bg-brand-primary rounded-full"
         initial={{ width: 0 }}
         whileHover={{ width: "100%" }}
         transition={{ duration: 0.3 }}
@@ -56,7 +56,7 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-14">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link
@@ -66,11 +66,12 @@ export function Navbar() {
           >
             {/* Logo */}
             <Image
-              src="/getdigitell.png"
-              alt="GetDigitell Logo"
+              src="/full-logo.png"
+              alt="GetDigitell - Professional Web Development and IT Solutions in the UK"
               width={150}
               height={150}
               className="object-contain"
+              style={{ height: "auto" }}
               priority
             />
           </Link>
@@ -82,10 +83,12 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
           <div className="hidden lg:block">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button asChild className="rounded-full px-6 group">
+              <Button
+                asChild
+                className="bg-brand-primary hover:bg-brand-primary/90 text-white rounded-full px-6 group"
+              >
                 <Link href="#pricing" className="flex items-center gap-2">
                   Get Started
                   <motion.span
@@ -154,7 +157,7 @@ export function Navbar() {
                     <Link
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="block py-3 px-4 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 rounded-xl transition-all"
+                      className="block py-3 px-4 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-brand-primary/5 rounded-xl transition-all"
                     >
                       {item.label}
                     </Link>
@@ -165,7 +168,10 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <Button asChild className="w-full mt-4 rounded-full">
+                  <Button
+                    asChild
+                    className="w-full mt-4 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white"
+                  >
                     <Link href="#contact" onClick={() => setIsOpen(false)}>
                       Get Started
                     </Link>
