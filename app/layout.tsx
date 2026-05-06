@@ -24,6 +24,13 @@ export const metadata: Metadata = {
       { url: "/getdigitell.png", sizes: "300x300", type: "image/png" },
     ],
   },
+  verification: {
+    other: {
+      "ahrefs-site-verification": [
+        "fb2d7136f389a19f29960384c3ac2437c75fdc924696471c2cb49fa5c34cb428",
+      ],
+    },
+  },
   keywords: [
     "Web Development UK",
     "Website Design UK",
