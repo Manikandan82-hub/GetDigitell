@@ -190,8 +190,8 @@ export function Services() {
                       {service.title}
                     </h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Professional {service.title.toLowerCase()} specifically
-                      for small business needs.
+                      Professional {service.title.toLowerCase()} solutions
+                      tailored for all business needs.
                     </p>
                   </div>
                 </div>
