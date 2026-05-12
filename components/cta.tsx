@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Clock } from "lucide-react";
 
 export function CTA() {
@@ -14,18 +16,19 @@ export function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-2xl bg-foreground px-6 py-8 sm:px-10 sm:py-10"
+          className="w-full"
         >
+          <Card className="relative overflow-hidden rounded-2xl bg-foreground px-6 py-8 sm:px-10 sm:py-10 border-0">
           {/* Subtle gradient accent */}
           <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
 
           <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary-foreground text-xs font-medium mb-3">
+              <Badge variant="secondary" className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 hover:bg-primary/30 text-primary-foreground text-xs font-medium mb-3 border-0">
                 <Clock size={12} />
                 <span>Limited Time Offer</span>
-              </div>
+              </Badge>
               <h2 className="heading-cta">Ready to build your next project?</h2>
               <p className="mt-2 max-w-md text-small-accent">
                 Launch within 48 hours. Get 15% off your first project.
@@ -69,6 +72,7 @@ export function CTA() {
               </motion.div>
             </div>
           </div>
+        </Card>
         </motion.div>
       </div>
     </section>

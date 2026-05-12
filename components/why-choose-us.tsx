@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Card } from "@/components/ui/card";
 /* ─── Card data ─── */
 const cards = [
   {
@@ -42,12 +43,12 @@ export function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="py-24 lg:py-15 bg-secondary/20 relative overflow-hidden"
+      className="py-10 lg:py-10 bg-secondary/20 relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-3 relative z-10">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-20 relative">
         {/* Top Section: Split Layout (Image smaller) */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20 lg:mb-8">
           {/* Left Text Content (Takes up 7 cols) */}
@@ -97,7 +98,7 @@ export function WhyChooseUs() {
             {/* Main Image Frame */}
             <div className="relative w-full sm:w-[90%] h-[320px] sm:h-[400px] lg:h-[480px] rounded-3xl overflow-hidden shadow-xl border-8 border-background bg-secondary/20">
               <Image
-                src="/images/why-choose-us.webp"
+                src="/images/getdigitell-why-choose-us.webp"
                 alt="Expert UK-based web development team providing fast and reliable digital solutions for small businesses"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -110,19 +111,21 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute -bottom-4 -left-2 sm:left-4 bg-background p-4 pr-6 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-border flex items-center gap-4 z-20"
+              className="absolute -bottom-4 -left-2 sm:left-4 z-20"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center text-primary font-black text-xl">
-                10+
-              </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-bold text-foreground leading-tight">
-                  Years of
-                </span>
-                <span className="text-xs text-muted-foreground font-medium">
-                  Experience
-                </span>
-              </div>
+              <Card className="bg-background p-4 pr-6 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-border flex flex-row items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center text-primary font-black text-xl">
+                  10+
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-foreground leading-tight">
+                    Years of
+                  </span>
+                  <span className="text-xs text-muted-foreground font-medium">
+                    Experience
+                  </span>
+                </div>
+              </Card>
             </motion.div>
           </motion.div>
         </div>
@@ -143,19 +146,21 @@ export function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col group p-6 rounded-3xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 cursor-default"
+                className="flex flex-col h-full"
               >
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-sm font-bold flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                    {String(index + 1).padStart(2, "0")}
+                <Card className="flex flex-col group p-6 rounded-3xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 cursor-default h-full">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-sm font-bold flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-lg font-bold m-0 leading-tight">
+                      {card.title}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-bold m-0 leading-tight">
-                    {card.title}
-                  </h3>
-                </div>
-                <p className="m-0 text-muted-foreground text-sm leading-relaxed">
-                  {card.description}
-                </p>
+                  <p className="m-0 text-muted-foreground text-sm leading-relaxed">
+                    {card.description}
+                  </p>
+                </Card>
               </motion.div>
             ))}
           </div>

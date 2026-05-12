@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Zap, Users, Target, TrendingUp } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import { useRef, useEffect, useState } from "react";
 
 const features = [
@@ -138,7 +139,7 @@ function FeatureCard({
         style={{ rotateX: rotateXSpring, rotateY: rotateYSpring }}
         className="h-full"
       >
-        <div
+        <Card
           className="group bg-card p-6 lg:p-4 rounded-2xl border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-500 h-full relative overflow-hidden"
           data-cursor-hover
         >
@@ -164,7 +165,7 @@ function FeatureCard({
           <p className="relative text-muted-foreground leading-relaxed">
             {feature.description}
           </p>
-        </div>
+        </Card>
       </motion.div>
     </motion.div>
   );
@@ -174,13 +175,13 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-2 lg:py-17 bg-secondary/20 relative overflow-hidden"
+      className="py-2 lg:py-15 bg-secondary/20 relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-3 relative">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-20 relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <motion.div

@@ -16,7 +16,7 @@ const baseTemplates = [
     color: "from-blue-600 to-indigo-600",
     bgColor: "bg-blue-600/10",
     url: "https://www.imaxlasertech.com/",
-    image: "/images/imax.jpeg",
+    image: "/images/getdigitell-imax.jpeg",
   },
   {
     title: "App Good Food",
@@ -26,7 +26,7 @@ const baseTemplates = [
     color: "from-orange-500 to-red-500",
     bgColor: "bg-orange-500/10",
     url: "https://appgoodfood.in/",
-    image: "/images/appgoodfood.jpeg",
+    image: "/images/getdigitell-appgoodfood.jpeg",
   },
 ];
 
@@ -36,35 +36,35 @@ const electricianThemes = [
     theme: "Green",
     color: "from-green-500 to-emerald-600",
     bgColor: "bg-green-500/10",
-    image: "/images/green.jpeg",
+    image: "/images/getdigitell-green.jpeg",
   },
   {
     url: "https://getdigitell-elec-blue.vercel.app/",
     theme: "Blue",
     color: "from-blue-500 to-indigo-600",
     bgColor: "bg-blue-500/10",
-    image: "/images/blue.jpeg",
+    image: "/images/getdigitell-blue.jpeg",
   },
   {
     url: "https://getdigitell-elec-b-y.vercel.app/",
     theme: "Black & Yellow",
     color: "from-yellow-500 to-black",
     bgColor: "bg-yellow-500/10",
-    image: "/images/electrician-pro.jpeg",
+    image: "/images/getdigitell-electrician-pro.jpeg",
   },
   {
     url: "https://getdigitell-elec-teal.vercel.app/",
     theme: "Teal",
     color: "from-teal-500 to-cyan-600",
     bgColor: "bg-teal-500/10",
-    image: "/images/teal.jpeg",
+    image: "/images/getdigitell-teal.jpeg",
   },
   {
     url: "https://getdigitell-elec-yello-f.vercel.app/",
     theme: "Yellow",
     color: "from-yellow-400 to-orange-500",
     bgColor: "bg-yellow-400/10",
-    image: "/images/yellow-f.jpeg",
+    image: "/images/getdigitell-yellow-f.jpeg",
   },
 ];
 export const templates = [
@@ -241,7 +241,7 @@ export function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="max-w-7xl mx-auto py-10 lg:py-10 bg-background relative overflow-hidden"
+      className="max-w-8xl mx-auto py-10 lg:py-10 px-4 sm:px-6 lg:px-20 bg-background relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />

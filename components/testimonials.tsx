@@ -5,6 +5,8 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const testimonials = [
   {
@@ -140,9 +142,9 @@ export function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
+          <Badge variant="secondary" className="inline-block px-4 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary font-medium text-sm mb-4 border-0">
             Testimonials
-          </span>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             Trusted by Founders Worldwide
           </h2>
@@ -168,8 +170,9 @@ export function Testimonials() {
                       stiffness: 400,
                       damping: 25,
                     }}
-                    className="bg-card border border-border hover:border-primary/30 rounded-3xl p-8 relative h-full flex flex-col shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
+                    className="h-full"
                   >
+                    <Card className="bg-card border border-border hover:border-primary/30 rounded-3xl p-8 relative h-full flex flex-col shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
                     {/* Hover Glow Effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -218,11 +221,12 @@ export function Testimonials() {
                       </div>
 
                       {/* Result Badge */}
-                      <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300 flex items-center gap-1 z-20">
+                      <Badge className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 px-3 py-1 bg-primary hover:bg-primary text-primary-foreground text-xs font-semibold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300 flex items-center gap-1 z-20 border-0">
                         <Star className="w-3 h-3 fill-current" />
                         <span>{testimonial.result}</span>
-                      </div>
+                      </Badge>
                     </div>
+                    </Card>
                   </motion.div>
                 </motion.div>
               ))}

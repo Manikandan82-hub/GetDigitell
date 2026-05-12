@@ -56,7 +56,7 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-14">
+      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-20">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link
@@ -66,7 +66,7 @@ export function Navbar() {
           >
             {/* Logo */}
             <Image
-              src="/full-logo.png"
+              src="/getdigitell-full-logo.png"
               alt="GetDigitell - Professional Web Development and IT Solutions in the UK"
               width={150}
               height={150}

@@ -7,6 +7,9 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ClickEffect } from "@/components/click-effect";
 import { Toaster } from "@/components/ui/sonner";
+import { CookieConsent } from "@/components/cookie-consent";
+import { ConsentProvider } from "@/lib/consent-context";
+import { AnalyticsWrapper } from "@/components/analytics-wrapper";
 
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
@@ -20,9 +23,24 @@ export const metadata: Metadata = {
     "We build high-performance, conversion-focused digital solutions starting at just £100. Get your professional website live in 48 hours. Experts in Web Development, UI/UX, and IT Services.",
   icons: {
     icon: [
-      { url: "/getdigitell.png", sizes: "150x150", type: "image/png" },
-      { url: "/getdigitell.png", sizes: "300x300", type: "image/png" },
+      {
+        url: "/getdigitell-getdigitell.png",
+        sizes: "150x150",
+        type: "image/png",
+      },
+      {
+        url: "/getdigitell-getdigitell.png",
+        sizes: "300x300",
+        type: "image/png",
+      },
     ],
+  },
+  verification: {
+    other: {
+      "ahrefs-site-verification": [
+        "fb2d7136f389a19f29960384c3ac2437c75fdc924696471c2cb49fa5c34cb428",
+      ],
+    },
   },
   keywords: [
     "Web Development UK",
@@ -86,13 +104,16 @@ export default function RootLayout({
       className="bg-background scroll-smooth scroll-pt-20 lg:scroll-pt-24"
     >
       <body className={`${sourceSans.variable} font-sans antialiased`}>
-        <ClickEffect />
-        <Navbar />
-        {children}
-        <Footer />
-        <FloatingWidget />
-        <Toaster richColors position="top-center" />
-        {process.env.NODE_ENV === "production" && <Analytics />}
+        <ConsentProvider>
+          <ClickEffect />
+          <Navbar />
+          {children}
+          <Footer />
+          <FloatingWidget />
+          <CookieConsent />
+          <Toaster richColors position="top-center" />
+          <AnalyticsWrapper />
+        </ConsentProvider>
       </body>
     </html>
   );
